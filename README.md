@@ -18,7 +18,37 @@
 | code      | 状态码 |
 | message     | 提示消息                   |
 | data     | 自定义返回的数据                   |
+### 1.注册api
+> 无需token
+> 
+> 访问：localhost:9090/user/register
+> 
+- 请求参数
 
+| 请求参数 | 类型                  | 说明                                    |
+| -------- | ----------------------------------- | --------------------------------------- |
+| password | 必选 | 密码，要求长度8到16位 |
+| username    | 必选 | 用户名，要求1-20位之间长度的字符串即可    |
+
+- 自定义返回的数据
+
+| 自定义返回的数据  | 说明                                                      |
+| ------------- | --------------------------------------------------------- |
+| token  | 请求成功返回token字符串 |
+| refreshToken | 刷新token                                            |
+
+- 返回实例
+```json
+    {
+  "code": 0,
+  "data": {
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imh5cW10ZXN0IiwiZXhwIjoxNjU1MDE5ODIxLCJpc3MiOiJBbHNhY2UiLCJuYmYiOjE2NTUwMTYyMjF9.b727OLT3jCJ3Tl4AOCKCNdz8T6u_yNsQBvlyjg6-2Xk",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imh5cW10ZXN0IiwiZXhwIjoxNjU1MDI3MDIxLCJpc3MiOiJBbHNhY2UiLCJuYmYiOjE2NTUwMTYxNjF9.w_578fS_ChRLx4KwVhIUB04zfMwjzDdm-mS3sbJwQYw",
+    "uid": 1
+  },
+  "message": "登录成功，欢迎进入！"
+}
+```
 
 
 
