@@ -87,6 +87,7 @@ func Chess(c *gin.Context) {
 		}
 		_, data, _ := conn.ReadMessage()
 		ok, _ := strconv.Atoi(string(data))
+		println(ok)
 		if ok == 1 {
 			if !OnlyOnce[uid] {
 				gameStart[roomid]++
@@ -98,6 +99,7 @@ func Chess(c *gin.Context) {
 				OnlyOnce[uid] = false
 			}
 		}
+		fmt.Println(gameStart[roomid])
 		if gameStart[roomid] == 2 {
 			err := conn.WriteMessage(websocket.TextMessage, []byte("游戏开始"))
 			if err != nil {
