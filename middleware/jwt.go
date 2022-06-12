@@ -1,9 +1,9 @@
 package middleware
 
 import (
-	"awesomeProject/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"redrock-test/service"
 	"strings"
 )
 

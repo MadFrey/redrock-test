@@ -1,12 +1,12 @@
 package controller
 
 import (
-	"awesomeProject/service"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/gorilla/websocket"
 	"log"
 	"net/http"
+	"redrock-test/service"
 	"strconv"
 	"strings"
 )
@@ -31,7 +31,7 @@ func Chess(c *gin.Context) {
 	header := c.Request.Header.Get("Cookie")
 	fmt.Println(header)
 	roomid := c.Query("roomid") //从请求里获取房价名roomid
-	uidd := c.Query("uid")     // 从请求里获取用户id
+	uidd := c.Query("uid")      // 从请求里获取用户id
 	uid, _ := strconv.Atoi(uidd)
 	fmt.Println("roomid:===", roomid)
 	fmt.Println("uid:==", uid)
@@ -99,10 +99,10 @@ func Chess(c *gin.Context) {
 			}
 		}
 		if gameStart[roomid] == 2 {
-				err := conn.WriteMessage(websocket.TextMessage, []byte("游戏开始"))
-				if err != nil {
-					log.Println("error:==", err)
-				}
+			err := conn.WriteMessage(websocket.TextMessage, []byte("游戏开始"))
+			if err != nil {
+				log.Println("error:==", err)
+			}
 
 			PlayerTurn = LocalPlayer[1]
 			str := service.InitChess()
@@ -131,7 +131,7 @@ func Chess(c *gin.Context) {
 						if ok {
 							str, flag1 := service.Move(temp[0], temp[1], temp[2], temp[3])
 							if flag1 == 1 {
-								for _,v :=range rooms[roomid]{
+								for _, v := range rooms[roomid] {
 									err = v.WriteMessage(websocket.TextMessage, []byte("黑方获胜"))
 									if err != nil {
 										log.Println(err)
@@ -178,10 +178,10 @@ func Chess(c *gin.Context) {
 						}
 						ok := service.IsAbleToMove(temp[0], temp[1], temp[2], temp[3])
 						if ok {
-							str,flag2:= service.Move(temp[0], temp[1], temp[2], temp[3])
+							str, flag2 := service.Move(temp[0], temp[1], temp[2], temp[3])
 
-							if flag2==1 {
-								for _,v :=range rooms[roomid]{
+							if flag2 == 1 {
+								for _, v := range rooms[roomid] {
 									err = v.WriteMessage(websocket.TextMessage, []byte("黑方获胜"))
 									if err != nil {
 										log.Println(err)
@@ -189,10 +189,10 @@ func Chess(c *gin.Context) {
 								}
 								return
 							}
-							for _,v :=range rooms[roomid]{
-								err := v.WriteMessage(websocket.TextMessage,[]byte(str))
-								if err!=nil{
-									log.Println("error:==",err)
+							for _, v := range rooms[roomid] {
+								err := v.WriteMessage(websocket.TextMessage, []byte(str))
+								if err != nil {
+									log.Println("error:==", err)
 								}
 							}
 							PlayerTurn = uid

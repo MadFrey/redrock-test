@@ -1,10 +1,10 @@
 package main
 
 import (
-	"awesomeProject/controller"
-	"awesomeProject/dao"
 	_ "github.com/go-sql-driver/mysql"
 	"log"
+	"redrock-test/controller"
+	"redrock-test/dao"
 )
 
 func main() {

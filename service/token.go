@@ -1,16 +1,16 @@
 package service
 
 import (
-	"awesomeProject/model"
 	"errors"
 	"github.com/dgrijalva/jwt-go"
+	"redrock-test/model"
 	"time"
 )
 
 var accessSecret = []byte("hyhjzy")
 var refreshSecret = []byte("ar")
 
-func CreateToken(username string) (string,string ){
+func CreateToken(username string) (string, string) {
 	var claims = model.MyClaims{
 		Username: username,
 		StandardClaims: jwt.StandardClaims{
@@ -19,44 +19,44 @@ func CreateToken(username string) (string,string ){
 			Issuer:    "Alsace",
 		},
 	}
-	token:=jwt.NewWithClaims(jwt.SigningMethodHS256,claims)
-	tokenSigned,err:=token.SignedString(accessSecret)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	tokenSigned, err := token.SignedString(accessSecret)
 	if err != nil {
 		panic(err)
-		return "",""
+		return "", ""
 	}
-	rT:=model.MyClaims{
+	rT := model.MyClaims{
 		Username: username,
-		StandardClaims:jwt.StandardClaims{
+		StandardClaims: jwt.StandardClaims{
 			NotBefore: time.Now().Unix(),
-			ExpiresAt:time.Now().Add(time.Hour).Unix(),
+			ExpiresAt: time.Now().Add(time.Hour).Unix(),
 			Issuer:    "Alsace",
 		},
 	}
-	refreshToken :=jwt.NewWithClaims(jwt.SigningMethodHS256,rT)
-	refreshTokenSigned,err:= refreshToken.SignedString(refreshSecret)
+	refreshToken := jwt.NewWithClaims(jwt.SigningMethodHS256, rT)
+	refreshTokenSigned, err := refreshToken.SignedString(refreshSecret)
 	if err != nil {
 		panic(err)
-		return "",""
+		return "", ""
 	}
-	return tokenSigned,refreshTokenSigned
+	return tokenSigned, refreshTokenSigned
 }
 
-func ParseToken(tokenString string,refreshTokenString string) (*model.MyClaims, bool, error) {
-	token,err:= jwt.ParseWithClaims(tokenString,&model.MyClaims{}, func(token *jwt.Token) (interface{}, error) {
-		return accessSecret,nil
+func ParseToken(tokenString string, refreshTokenString string) (*model.MyClaims, bool, error) {
+	token, err := jwt.ParseWithClaims(tokenString, &model.MyClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return accessSecret, nil
 	})
-	if claims,ok:=token.Claims.(*model.MyClaims);ok&&token.Valid {
-		return claims,false,nil
+	if claims, ok := token.Claims.(*model.MyClaims); ok && token.Valid {
+		return claims, false, nil
 	}
-	refreshToken,err:= jwt.ParseWithClaims(refreshTokenString,&model.MyClaims{}, func(token *jwt.Token) (interface{}, error) {
-		return refreshSecret,nil
+	refreshToken, err := jwt.ParseWithClaims(refreshTokenString, &model.MyClaims{}, func(token *jwt.Token) (interface{}, error) {
+		return refreshSecret, nil
 	})
 	if err != nil {
 		return nil, false, err
 	}
-	if claims,ok:=refreshToken.Claims.(*model.MyClaims);ok&&refreshToken.Valid {
-		return claims,true,nil
+	if claims, ok := refreshToken.Claims.(*model.MyClaims); ok && refreshToken.Valid {
+		return claims, true, nil
 	}
-	return nil,false,errors.New("invalid token")
+	return nil, false, errors.New("invalid token")
 }

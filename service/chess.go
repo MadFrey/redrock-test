@@ -1,10 +1,10 @@
 package service
 
 import (
-	"awesomeProject/util"
 	"fmt"
 	"github.com/gorilla/websocket"
 	"net/http"
+	"redrock-test/util"
 )
 
 var rooms = make(map[string]map[int]*websocket.Conn)
@@ -29,7 +29,7 @@ func initMap() {
 	}
 }
 
-func InitChess()string {
+func InitChess() string {
 	initMap()
 	//布置黑方棋子
 	Chess[0] = "将" //第0行第4列
@@ -87,26 +87,26 @@ func InitChess()string {
 		Chess[27+i] = "兵"
 		m[6][i*2] = 27 + i
 	}
-	str:=util.InputChess(m,Chess)
+	str := util.InputChess(m, Chess)
 	return str
 }
 
 func IsAbleToMove(x int, y int, tx int, ty int) bool {
-	fmt.Println(x,y,tx,ty)
+	fmt.Println(x, y, tx, ty)
 	if m[x][y] == 0 || m[x][y] == 16 {
-		if  m[x][y] == 0  {
-			if y==ty&&(m[tx][ty]==0||m[tx][ty]==16) {
-				for i:=tx+1;i<x;i++{
-					if m[i][ty]!=-1 {
+		if m[x][y] == 0 {
+			if y == ty && (m[tx][ty] == 0 || m[tx][ty] == 16) {
+				for i := tx + 1; i < x; i++ {
+					if m[i][ty] != -1 {
 						return true
 					}
 				}
 				return true
 			}
-		}else {
-			if y==ty&&(m[tx][ty]==0||m[tx][ty]==16) {
-				for i:=tx-1;i>=0;i--{
-					if m[i][ty]!=-1 {
+		} else {
+			if y == ty && (m[tx][ty] == 0 || m[tx][ty] == 16) {
+				for i := tx - 1; i >= 0; i-- {
+					if m[i][ty] != -1 {
 						return true
 					}
 				}
@@ -121,13 +121,13 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 		if x-tx > 1 || tx-x > 1 { //如果横走或竖走超过一格
 			return false
 		}
-		if m[x][y]==0 {
-			if tx > 2||ty > 5||ty < 3{
+		if m[x][y] == 0 {
+			if tx > 2 || ty > 5 || ty < 3 {
 				return false
 			}
 			return true
-		}else{
-			if tx < 7||ty > 5||ty < 3{
+		} else {
+			if tx < 7 || ty > 5 || ty < 3 {
 				return false
 			}
 			return true
@@ -151,16 +151,16 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 			return false
 		}
 
-		if ((tx-x != 2&&tx-x !=-2)||( x-tx != 2&&x-tx !=-2)) || ((ty-y != 2&&ty-y!=-2  )||( y-ty != 2&&y-ty!=-2)) { //如果横向或者纵向的位移量不同时为2，即不是走田字
+		if ((tx-x != 2 && tx-x != -2) || (x-tx != 2 && x-tx != -2)) || ((ty-y != 2 && ty-y != -2) || (y-ty != 2 && y-ty != -2)) { //如果横向或者纵向的位移量不同时为2，即不是走田字
 			return false
 		}
 		fmt.Println(111)
-		if m[x][y]<17&&m[x][y]>0 {
-			if tx>4 { //如果象越过“楚河-汉界”
+		if m[x][y] < 17 && m[x][y] > 0 {
+			if tx > 4 { //如果象越过“楚河-汉界”
 				return false
 			}
 		}
-		if m[x][y]<33&&m[x][y]>16 {
+		if m[x][y] < 33 && m[x][y] > 16 {
 			if tx < 5 { //如果象越过“楚河-汉界”
 				return false
 			}
@@ -183,14 +183,14 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 		if m[i][j] != -1 { //被堵象眼
 			return false
 		}
-		if ty>9||tx>10||ty<0||tx<0 {
+		if ty > 9 || tx > 10 || ty < 0 || tx < 0 {
 			return false
 		}
 		return true
 	}
 
 	if m[x][y] == 5 || m[x][y] == 6 || m[x][y] == 21 || m[x][y] == 22 {
-		if (ty-y)*(tx-x) != 2&&(ty-y)*(tx-x) != -2 { //如果横向位移量乘以竖向位移量不等于2,即如果马不是走日字
+		if (ty-y)*(tx-x) != 2 && (ty-y)*(tx-x) != -2 { //如果横向位移量乘以竖向位移量不等于2,即如果马不是走日字
 			return false
 		}
 		if tx-x == 2 { //如果马向下跳，并且横向位移量为1，纵向位移量为2
@@ -214,7 +214,7 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 				return false
 			}
 		}
-		if ty>9||tx>10||ty<0||tx<0 {
+		if ty > 9 || tx > 10 || ty < 0 || tx < 0 {
 			return false
 		}
 		return true
@@ -249,7 +249,7 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 				}
 			}
 		}
-		if ty>9||tx>10||ty<0||tx<0 {
+		if ty > 9 || tx > 10 || ty < 0 || tx < 0 {
 			return false
 		}
 		return true
@@ -324,7 +324,7 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 				return false
 			}
 		}
-		if ty>9||tx>10||ty<0||tx<0 {
+		if ty > 9 || tx > 10 || ty < 0 || tx < 0 {
 			return false
 		}
 		return true
@@ -337,7 +337,7 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 			return false
 		}
 
-		if x >4&&(m[x][y]>16&&m[x][y]<33) {
+		if x > 4 && (m[x][y] > 16 && m[x][y] < 33) {
 			//如果兵未过河，则只能向上移动,不能左右移动
 			if ty-y > 0 || y-ty > 0 { //没过河尝试左右移动
 				return false
@@ -347,13 +347,13 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 			}
 			return true
 		} else {
-			if x<5&&(m[x][y]>16&&m[x][y]<33) {
+			if x < 5 && (m[x][y] > 16 && m[x][y] < 33) {
 				if tx-x == 1 { //兵向下移动
 					return false
 				}
-			}//如果已经过河，可以进行上左右移动，但不能进行向下移动
+			} //如果已经过河，可以进行上左右移动，但不能进行向下移动
 		}
-		if x <5&&(m[x][y]>0&&m[x][y]<17) { //如果兵未过河，则只能向上移动,不能左右移动
+		if x < 5 && (m[x][y] > 0 && m[x][y] < 17) { //如果兵未过河，则只能向上移动,不能左右移动
 			if ty-y > 0 || y-ty > 0 { //没过河尝试左右移动
 				return false
 			}
@@ -361,13 +361,13 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 				return false
 			}
 		} else {
-			if x>=5 {
+			if x >= 5 {
 				if tx-x == -1 { //兵向下移动
 					return false
 				}
-			}//如果已经过河，可以进行上左右移动，但不能进行向下移动
+			} //如果已经过河，可以进行上左右移动，但不能进行向下移动
 		}
-		if ty>9||tx>10||ty<0||tx<0 {
+		if ty > 9 || tx > 10 || ty < 0 || tx < 0 {
 			return false
 		}
 		return true
@@ -375,54 +375,53 @@ func IsAbleToMove(x int, y int, tx int, ty int) bool {
 	return true
 }
 
-func Move(x int, y int, tx int, ty int) (string,int){
-	flag:=0
+func Move(x int, y int, tx int, ty int) (string, int) {
+	flag := 0
 	if IsAbleToMove(x, y, tx, ty) {
-		if (m[tx][ty] == 0 || m[tx][ty] == 16)&&(m[x][y]!=0&&m[x][y]!=16) {
-			flag=1
-			str:=util.InputChess(m,Chess)
-			return str,flag
+		if (m[tx][ty] == 0 || m[tx][ty] == 16) && (m[x][y] != 0 && m[x][y] != 16) {
+			flag = 1
+			str := util.InputChess(m, Chess)
+			return str, flag
 		}
-		if m[x][y]==0||m[x][y]==16 {
-			if  m[x][y] == 0  {
-				if y==ty&&(m[tx][ty]==0||m[tx][ty]==16) {
-					flag1:=0
-					for i:=tx+1;i<x;i++{
-						if m[i][ty]!=-1 {
-							flag1=1
+		if m[x][y] == 0 || m[x][y] == 16 {
+			if m[x][y] == 0 {
+				if y == ty && (m[tx][ty] == 0 || m[tx][ty] == 16) {
+					flag1 := 0
+					for i := tx + 1; i < x; i++ {
+						if m[i][ty] != -1 {
+							flag1 = 1
 						}
 					}
-					if flag1==0 {
-						flag=1
-						str:=util.InputChess(m,Chess)
-						return str,flag
+					if flag1 == 0 {
+						flag = 1
+						str := util.InputChess(m, Chess)
+						return str, flag
 					}
 				}
-			}else {
-				if y==ty&&(m[tx][ty]==0||m[tx][ty]==16) {
-					flag1:=0
-					for i:=tx-1;i>=0;i--{
-						if m[i][ty]!=-1 {
-							flag1=1
+			} else {
+				if y == ty && (m[tx][ty] == 0 || m[tx][ty] == 16) {
+					flag1 := 0
+					for i := tx - 1; i >= 0; i-- {
+						if m[i][ty] != -1 {
+							flag1 = 1
 						}
 					}
-					if flag1==0 {
-						flag=1
-						str:=util.InputChess(m,Chess)
-						return str,flag
+					if flag1 == 0 {
+						flag = 1
+						str := util.InputChess(m, Chess)
+						return str, flag
 					}
 				}
 			}
 		}
 		if 0 < m[tx][ty] && m[tx][ty] < 33 {
 			m[tx][ty] = m[x][y]
-			m[x][y]=-1
+			m[x][y] = -1
 		} else {
 			m[tx][ty] = m[x][y]
-			m[x][y]=-1
+			m[x][y] = -1
 		}
 	}
-	str:=util.InputChess(m,Chess)
-	return str,flag
+	str := util.InputChess(m, Chess)
+	return str, flag
 }
-

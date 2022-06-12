@@ -1,4 +1,4 @@
-module awesomeProject
+module redrock-test
 
 go 1.17
 

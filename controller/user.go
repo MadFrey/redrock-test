@@ -1,10 +1,10 @@
 package controller
 
 import (
-	"awesomeProject/service"
-	"awesomeProject/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"redrock-test/service"
+	"redrock-test/util"
 )
 
 func RegisterPost(c *gin.Context) {
