@@ -1,17 +1,17 @@
 package service
 
 import (
-	"awesomeProject/dao"
-	"awesomeProject/model"
-	"awesomeProject/util"
 	"log"
+	"redrock-test/dao"
+	"redrock-test/model"
+	"redrock-test/util"
 )
 
-func JudgeUserExist(username string, password string)( bool,int) {
+func JudgeUserExist(username string, password string) (bool, int) {
 	pwd := model.QueryUserPwd(username)
 	id := model.QueryIdWithUsername(username)
 	verify := util.PasswordVerify(password, pwd)
-	return verify,id
+	return verify, id
 }
 
 func AddNewUserProcess(username string, password string) (int64, error) {
@@ -25,20 +25,3 @@ func AddNewUserProcess(username string, password string) (int64, error) {
 	// 返回
 	return model.InsertUser(dao.DB, user)
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
