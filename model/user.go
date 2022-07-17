@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"log"
 	"redrock-test/dao"
+	"redrock-test/util"
 )
 
 type User struct {
@@ -45,7 +46,7 @@ func QueryIdWithUsername(username string) int {
 	id := 0
 	err := row.Scan(&id)
 	if err != nil {
-		log.Println(err)
+		util.SugarLogger.Error(err)
 		return 0
 	}
 	return id

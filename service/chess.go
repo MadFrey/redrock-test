@@ -1,3 +1,9 @@
+/**
+ * @Author: lrc
+ * @Date: 2022/7/17-9:51
+ * @Desc:棋子相关服务
+ **/
+
 package service
 
 import (
@@ -7,10 +13,8 @@ import (
 	"redrock-test/util"
 )
 
-var rooms = make(map[string]map[int]*websocket.Conn)
-var m [10][9]int
-var Chess [32]string
-var gamer int
+var m [10][9]int     //棋盘
+var Chess [32]string //棋子
 
 var UP = websocket.Upgrader{
 	ReadBufferSize:  1024,
@@ -21,7 +25,6 @@ var UP = websocket.Upgrader{
 }
 
 func initMap() {
-
 	for i := 0; i < 10; i++ {
 		for j := 0; j < 9; j++ {
 			m[i][j] = -1
@@ -33,14 +36,14 @@ func InitChess() string {
 	initMap()
 	//布置黑方棋子
 	Chess[0] = "将" //第0行第4列
-	m[0][4] = 0
+	m[0][4] = 0    //m中储存的值对应chess中的棋子名称 如m储存的0，则对应chess[0]中储存的棋子名称 下同
 	Chess[1] = "士" //第0行第3列
 	m[0][3] = 1
 	Chess[2] = "士" //第0行第5列
 	m[0][5] = 2
 	Chess[3] = "象" //第0行第2列
 	m[0][2] = 3
-	Chess[4] = "象"
+	Chess[4] = "象" //第0行第6列
 	m[0][6] = 4
 	Chess[5] = "黑马" //第0行第1列
 	m[0][1] = 5

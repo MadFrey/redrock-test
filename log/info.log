@@ -1,0 +1,6 @@
+2022-07-16T22:04:38.358+0800	DEBUG	redrock-test/main.go:13	初始化数据库
+2022-07-16T22:09:34.598+0800	DEBUG	redrock-test/main.go:13	初始化数据库
+2022-07-16T22:10:16.201+0800	DEBUG	redrock-test/main.go:13	初始化数据库
+2022-07-16T22:10:16.223+0800	DEBUG	redrock-test/main.go:19	初始化路由
+2022-07-16T22:12:31.727+0800	INFO	middleware/logger.go:24	/user/register{status 11 200  <nil>} {method 15 0 POST <nil>} {path 15 0 /user/register <nil>} {query 15 0 username=12345678&password=qqqqqqqqq&rePassword=qqqqqqqqq <nil>} {ip 15 0 ::1 <nil>} {user-agent 15 0 PostmanRuntime/7.29.0 <nil>} {errors 15 0  <nil>} {cost 8 57704800  <nil>}
+2022-07-16T22:13:09.618+0800	INFO	middleware/logger.go:24	/user/register/yyyyy{status 11 404  <nil>} {method 15 0 POST <nil>} {path 15 0 /user/register/yyyyy <nil>} {query 15 0  <nil>} {ip 15 0 ::1 <nil>} {user-agent 15 0 PostmanRuntime/7.29.0 <nil>} {errors 15 0  <nil>} {cost 8 0  <nil>}

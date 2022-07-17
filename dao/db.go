@@ -1,6 +1,8 @@
 package dao
 
-import "database/sql"
+import (
+	"database/sql"
+)
 
 var DB *sql.DB
 
@@ -17,4 +19,3 @@ func Init(dns string) (err error) {
 
 	return nil
 }
-

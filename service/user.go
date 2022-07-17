@@ -1,7 +1,12 @@
+/**
+ * @Author: lrc
+ * @Date: 2022/7/16-23:27
+ * @Desc: 用户操作
+ **/
+
 package service
 
 import (
-	"log"
 	"redrock-test/dao"
 	"redrock-test/model"
 	"redrock-test/util"
@@ -18,7 +23,7 @@ func AddNewUserProcess(username string, password string) (int64, error) {
 	// 用户数据
 	hash, err := util.PasswordHash(password)
 	if err != nil {
-		log.Println(err)
+		util.SugarLogger.Error(err)
 		return 0, err
 	}
 	user := model.User{Username: username, Password: hash}
