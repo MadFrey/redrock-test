@@ -1,0 +1,235 @@
+2022-07-18T10:21:33.885+0800	ERROR	middleware/logger.go:66	[Recovery from panic]{error 26 0  runtime error: invalid memory address or nil pointer dereference} {request 15 0 POST /user/login HTTP/1.1
+Host: example.com
+
+ <nil>} {stack 15 0 goroutine 18 [running]:
+runtime/debug.Stack()
+	D:/Go/src/runtime/debug/stack.go:24 +0x65
+redrock-test/middleware.GinZapRecovery.func1.1()
+	D:/Goprojects/src/redrock-test/middleware/logger.go:69 +0x318
+panic({0x6c5d00, 0xa02c00})
+	D:/Go/src/runtime/panic.go:1038 +0x215
+database/sql.(*DB).conn(0x0, {0x7ba0d0, 0xc00000a1a0}, 0x1)
+	D:/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).query(0xc, {0x7ba0d0, 0xc00000a1a0}, {0x73e77f, 0x2a}, {0xc0000615f8, 0x1, 0x1}, 0x50)
+	D:/Go/src/database/sql/sql.go:1695 +0x5d
+database/sql.(*DB).QueryContext(0x0, {0x7ba0d0, 0xc00000a1a0}, {0x73e77f, 0x2a}, {0xc0000615f8, 0x1, 0x1})
+	D:/Go/src/database/sql/sql.go:1674 +0xdf
+database/sql.(*DB).QueryRowContext(...)
+	D:/Go/src/database/sql/sql.go:1778
+database/sql.(*DB).QueryRow(0x0, {0x73e77f, 0x3d3f08}, {0xc0000615f8, 0xc000061600, 0x36dc47})
+	D:/Go/src/database/sql/sql.go:1792 +0x4a
+redrock-test/model.QueryUserPwd({0x0, 0xc000061688})
+	D:/Goprojects/src/redrock-test/model/user.go:18 +0x5e
+redrock-test/service.JudgeUserExist({0x0, 0x0}, {0x0, 0x0})
+	D:/Goprojects/src/redrock-test/service/user.go:16 +0x4b
+redrock-test/controller.LoginPost(0x7ac238)
+	D:/Goprojects/src/redrock-test/controller/user.go:51 +0x72
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinZapRecovery.func1(0xc000494100)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:80 +0x76
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinLogger.func1(0xc000494100)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:21 +0xa2
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc000085380, 0xc000494100)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:616 +0x671
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc000085380, {0x7b79b8, 0xc000092a00}, 0xc000494000)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:572 +0x1dd
+redrock-test/controller.TestLoginPost(0x0)
+	D:/Goprojects/src/redrock-test/controller/user_test.go:30 +0x118
+testing.tRunner(0xc000085040, 0x74ee20)
+	D:/Go/src/testing/testing.go:1259 +0x102
+created by testing.(*T).Run
+	D:/Go/src/testing/testing.go:1306 +0x35a
+ <nil>}
+2022-07-18T10:21:58.027+0800	ERROR	middleware/logger.go:66	[Recovery from panic]{error 26 0  runtime error: invalid memory address or nil pointer dereference} {request 15 0 POST /user/login HTTP/1.1
+Host: example.com
+
+ <nil>} {stack 15 0 goroutine 18 [running]:
+runtime/debug.Stack()
+	D:/Go/src/runtime/debug/stack.go:24 +0x65
+redrock-test/middleware.GinZapRecovery.func1.1()
+	D:/Goprojects/src/redrock-test/middleware/logger.go:69 +0x318
+panic({0x10d5d00, 0x1412c00})
+	D:/Go/src/runtime/panic.go:1038 +0x215
+database/sql.(*DB).conn(0x0, {0x11ca0f0, 0xc00000a1a0}, 0x1)
+	D:/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).query(0xc, {0x11ca0f0, 0xc00000a1a0}, {0x114e77f, 0x2a}, {0xc0000615f8, 0x1, 0x1}, 0x90)
+	D:/Go/src/database/sql/sql.go:1695 +0x5d
+database/sql.(*DB).QueryContext(0x0, {0x11ca0f0, 0xc00000a1a0}, {0x114e77f, 0x2a}, {0xc0000615f8, 0x1, 0x1})
+	D:/Go/src/database/sql/sql.go:1674 +0xdf
+database/sql.(*DB).QueryRowContext(...)
+	D:/Go/src/database/sql/sql.go:1778
+database/sql.(*DB).QueryRow(0x0, {0x114e77f, 0xde3f08}, {0xc0000615f8, 0xc000061600, 0xd7dc47})
+	D:/Go/src/database/sql/sql.go:1792 +0x4a
+redrock-test/model.QueryUserPwd({0x0, 0xc000061688})
+	D:/Goprojects/src/redrock-test/model/user.go:18 +0x5e
+redrock-test/service.JudgeUserExist({0x0, 0x0}, {0x0, 0x0})
+	D:/Goprojects/src/redrock-test/service/user.go:16 +0x4b
+redrock-test/controller.LoginPost(0x11bc268)
+	D:/Goprojects/src/redrock-test/controller/user.go:51 +0x72
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinZapRecovery.func1(0xc000096200)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:80 +0x76
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinLogger.func1(0xc000096200)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:21 +0xa2
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc000085380, 0xc000096200)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:616 +0x671
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc000085380, {0x11c79d8, 0xc000090a00}, 0xc000096100)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:572 +0x1dd
+redrock-test/controller.TestLoginPost(0x0)
+	D:/Goprojects/src/redrock-test/controller/user_test.go:30 +0x118
+testing.tRunner(0xc0000851e0, 0x115ee50)
+	D:/Go/src/testing/testing.go:1259 +0x102
+created by testing.(*T).Run
+	D:/Go/src/testing/testing.go:1306 +0x35a
+ <nil>}
+2022-07-18T10:22:08.748+0800	ERROR	middleware/logger.go:66	[Recovery from panic]{error 26 0  runtime error: invalid memory address or nil pointer dereference} {request 15 0 POST /user/login HTTP/1.1
+Host: example.com
+
+ <nil>} {stack 15 0 goroutine 11 [running]:
+runtime/debug.Stack()
+	D:/Go/src/runtime/debug/stack.go:24 +0x65
+redrock-test/middleware.GinZapRecovery.func1.1()
+	D:/Goprojects/src/redrock-test/middleware/logger.go:69 +0x318
+panic({0x1305d80, 0x1643320})
+	D:/Go/src/runtime/panic.go:1038 +0x215
+database/sql.(*DB).conn(0x0, {0x13fa310, 0xc00000e0e8}, 0x1)
+	D:/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).query(0xc, {0x13fa310, 0xc00000e0e8}, {0x137e939, 0x2a}, {0xc0000675f8, 0x1, 0x1}, 0x60)
+	D:/Go/src/database/sql/sql.go:1695 +0x5d
+database/sql.(*DB).QueryContext(0x0, {0x13fa310, 0xc00000e0e8}, {0x137e939, 0x2a}, {0xc0000675f8, 0x1, 0x1})
+	D:/Go/src/database/sql/sql.go:1674 +0xdf
+database/sql.(*DB).QueryRowContext(...)
+	D:/Go/src/database/sql/sql.go:1778
+database/sql.(*DB).QueryRow(0x0, {0x137e939, 0x1013f08}, {0xc0000675f8, 0xc000067600, 0xfadc47})
+	D:/Go/src/database/sql/sql.go:1792 +0x4a
+redrock-test/model.QueryUserPwd({0x0, 0xc000067688})
+	D:/Goprojects/src/redrock-test/model/user.go:18 +0x5e
+redrock-test/service.JudgeUserExist({0x0, 0x0}, {0x0, 0x0})
+	D:/Goprojects/src/redrock-test/service/user.go:16 +0x4b
+redrock-test/controller.LoginPost(0x2000000020)
+	D:/Goprojects/src/redrock-test/controller/user.go:51 +0x7d
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinZapRecovery.func1(0xc0001c3500)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:80 +0x76
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinLogger.func1(0xc0001c3500)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:21 +0xa2
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc0003f5040, 0xc0001c3500)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:616 +0x671
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc0003f5040, {0x13f7bf8, 0xc0003f0f40}, 0xc0001c3400)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:572 +0x1dd
+redrock-test/controller.TestLoginPost(0x0)
+	D:/Goprojects/src/redrock-test/controller/user_test.go:30 +0x118
+testing.tRunner(0xc0003f4ea0, 0x138f008)
+	D:/Go/src/testing/testing.go:1259 +0x102
+created by testing.(*T).Run
+	D:/Go/src/testing/testing.go:1306 +0x35a
+ <nil>}
+2022-07-18T10:22:51.801+0800	ERROR	middleware/logger.go:66	[Recovery from panic]{error 26 0  runtime error: invalid memory address or nil pointer dereference} {request 15 0 POST /user/login HTTP/1.1
+Host: example.com
+
+ <nil>} {stack 15 0 goroutine 22 [running]:
+runtime/debug.Stack()
+	D:/Go/src/runtime/debug/stack.go:24 +0x65
+redrock-test/middleware.GinZapRecovery.func1.1()
+	D:/Goprojects/src/redrock-test/middleware/logger.go:69 +0x318
+panic({0xc15d80, 0xf53320})
+	D:/Go/src/runtime/panic.go:1038 +0x215
+database/sql.(*DB).conn(0x0, {0xd0a310, 0xc00000e0e8}, 0x1)
+	D:/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).query(0xc, {0xd0a310, 0xc00000e0e8}, {0xc8e939, 0x2a}, {0xc0003d95f8, 0x1, 0x1}, 0xa0)
+	D:/Go/src/database/sql/sql.go:1695 +0x5d
+database/sql.(*DB).QueryContext(0x0, {0xd0a310, 0xc00000e0e8}, {0xc8e939, 0x2a}, {0xc0003d95f8, 0x1, 0x1})
+	D:/Go/src/database/sql/sql.go:1674 +0xdf
+database/sql.(*DB).QueryRowContext(...)
+	D:/Go/src/database/sql/sql.go:1778
+database/sql.(*DB).QueryRow(0x0, {0xc8e939, 0x923f08}, {0xc0003d95f8, 0xc0003d9600, 0x8bdc47})
+	D:/Go/src/database/sql/sql.go:1792 +0x4a
+redrock-test/model.QueryUserPwd({0x0, 0xc0003d9688})
+	D:/Goprojects/src/redrock-test/model/user.go:18 +0x5e
+redrock-test/service.JudgeUserExist({0x0, 0x0}, {0x0, 0x0})
+	D:/Goprojects/src/redrock-test/service/user.go:16 +0x4b
+redrock-test/controller.LoginPost(0x2000000020)
+	D:/Goprojects/src/redrock-test/controller/user.go:51 +0x7d
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinZapRecovery.func1(0xc0001c3100)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:80 +0x76
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinLogger.func1(0xc0001c3100)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:21 +0xa2
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc000213860, 0xc0001c3100)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:616 +0x671
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc000213860, {0xd07bf8, 0xc0003a3f00}, 0xc0001c3000)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:572 +0x1dd
+redrock-test/controller.TestLoginPost(0x0)
+	D:/Goprojects/src/redrock-test/controller/user_test.go:30 +0x118
+testing.tRunner(0xc000419a00, 0xc9f008)
+	D:/Go/src/testing/testing.go:1259 +0x102
+created by testing.(*T).Run
+	D:/Go/src/testing/testing.go:1306 +0x35a
+ <nil>}
+2022-07-18T10:40:31.733+0800	ERROR	middleware/logger.go:66	[Recovery from panic]{error 26 0  runtime error: invalid memory address or nil pointer dereference} {request 15 0 POST /user/login HTTP/1.1
+Host: example.com
+
+ <nil>} {stack 15 0 goroutine 38 [running]:
+runtime/debug.Stack()
+	D:/Go/src/runtime/debug/stack.go:24 +0x65
+redrock-test/middleware.GinZapRecovery.func1.1()
+	D:/Goprojects/src/redrock-test/middleware/logger.go:69 +0x318
+panic({0x465d80, 0x7a3320})
+	D:/Go/src/runtime/panic.go:1038 +0x215
+database/sql.(*DB).conn(0x0, {0x55a310, 0xc00000e0e8}, 0x1)
+	D:/Go/src/database/sql/sql.go:1260 +0x53
+database/sql.(*DB).query(0xc, {0x55a310, 0xc00000e0e8}, {0x4de939, 0x2a}, {0xc0000575f8, 0x1, 0x1}, 0xc0)
+	D:/Go/src/database/sql/sql.go:1695 +0x5d
+database/sql.(*DB).QueryContext(0x0, {0x55a310, 0xc00000e0e8}, {0x4de939, 0x2a}, {0xc0000575f8, 0x1, 0x1})
+	D:/Go/src/database/sql/sql.go:1674 +0xdf
+database/sql.(*DB).QueryRowContext(...)
+	D:/Go/src/database/sql/sql.go:1778
+database/sql.(*DB).QueryRow(0x0, {0x4de939, 0x173f08}, {0xc0000575f8, 0xc000057600, 0x10dc47})
+	D:/Go/src/database/sql/sql.go:1792 +0x4a
+redrock-test/model.QueryUserPwd({0x0, 0xc000057688})
+	D:/Goprojects/src/redrock-test/model/user.go:18 +0x5e
+redrock-test/service.JudgeUserExist({0x0, 0x0}, {0x0, 0x0})
+	D:/Goprojects/src/redrock-test/service/user.go:16 +0x4b
+redrock-test/controller.LoginPost(0x2000000020)
+	D:/Goprojects/src/redrock-test/controller/user.go:51 +0x7d
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinZapRecovery.func1(0xc000496600)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:80 +0x76
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+redrock-test/middleware.GinLogger.func1(0xc000496600)
+	D:/Goprojects/src/redrock-test/middleware/logger.go:21 +0xa2
+github.com/gin-gonic/gin.(*Context).Next(...)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/context.go:173
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest(0xc0004516c0, 0xc000496600)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:616 +0x671
+github.com/gin-gonic/gin.(*Engine).ServeHTTP(0xc0004516c0, {0x557bf8, 0xc00040d180}, 0xc000496500)
+	D:/Goprojects/pkg/mod/github.com/gin-gonic/gin@v1.8.1/gin.go:572 +0x1dd
+redrock-test/controller.TestLoginPost(0x0)
+	D:/Goprojects/src/redrock-test/controller/user_test.go:30 +0x118
+testing.tRunner(0xc000451520, 0x4ef008)
+	D:/Go/src/testing/testing.go:1259 +0x102
+created by testing.(*T).Run
+	D:/Go/src/testing/testing.go:1306 +0x35a
+ <nil>}
